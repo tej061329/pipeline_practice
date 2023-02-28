@@ -23,9 +23,10 @@ pipeline {
 
         stage('DEPLOY') {
             steps{
-                sh '
+                sh '''
               echo "this is the last and deploy stage"
-              '
+              echo "END"
+              '''
             }
         }
     }
