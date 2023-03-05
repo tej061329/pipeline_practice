@@ -8,6 +8,7 @@ pipeline {
                     sleep 5
                     echo "This is a build stage"
                     echo "welcome"
+                    exit 1
                 '''
             }
         }
