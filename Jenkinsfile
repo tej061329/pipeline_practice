@@ -3,6 +3,7 @@ pipeline {
     stages{
         stage('build') {
             steps{
+                 catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
                  sh '''
                     sleep 5
                     echo "This is a build stage"
@@ -10,7 +11,7 @@ pipeline {
                 '''
             }
         }
-
+        }
         stage('test') {
             
             parallel {
