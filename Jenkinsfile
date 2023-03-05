@@ -32,6 +32,24 @@ pipeline {
                     '''
             }
         }
+             stage('TEST ON MAC MACHINE') {
+            steps{
+                sh '''
+                    sleep 6
+                    echo "This is a test stage"
+                    echo "continue"
+                    '''
+            }
+        }   
+               stage('TEST ON CHROME MACHINE') {
+            steps{
+                sh '''
+                    sleep 6
+                    echo "This is a test stage"
+                    echo "continue"
+                    '''
+            }
+        }  
             }
         }
         stage('DEPLOY') {
