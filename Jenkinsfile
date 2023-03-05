@@ -1,26 +1,40 @@
 pipeline {
     agent any 
     stages{
-        stage('FIRST') {
+        stage('build') {
             steps{
                  sh '''
                     sleep 5
-                    echo "This is a FIRST stage"
+                    echo "This is a build stage"
                     echo "welcome"
                 '''
             }
         }
 
-        stage('SECOND') {
+        stage('test') {
+            
+            parallel {
+
+                stage('TEST ON LINUX MACHINE') {
+                    steps {
+                        sh '''
+                            sleep 6
+                            echo "This is a TEST on LINUX"
+                            exit 1
+                        '''
+                    }
+                }
+            stage('TEST ON WINDOWS MACHINE') {
             steps{
                 sh '''
                     sleep 6
-                    echo "This is a second stage"
+                    echo "This is a test stage"
                     echo "continue"
                     '''
             }
         }
-
+            }
+        }
         stage('DEPLOY') {
             steps{
                 sh '''
